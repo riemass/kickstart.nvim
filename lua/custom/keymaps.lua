@@ -5,6 +5,9 @@ vim.keymap.set('n', '<C-k>', "<C-w>k", { silent = true })
 vim.keymap.set('n', '<C-l>', "<C-w>l", { silent = true })
 vim.keymap.set('n', '<C-l>', "<C-w>l", { silent = true })
 
+-- Center split
+vim.keymap.set('n', '<leader>=', "<C-w>=", { silent = true })
+
 -- Change next/prev buffers
 local nextbuffer = function() vim.cmd("BufferNext") end
 local prevbuffer = function() vim.cmd("BufferPrevious") end

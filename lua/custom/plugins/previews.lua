@@ -1,26 +1,32 @@
 return {
+	-- {
+	-- 	-- renders to pdf, supports filters. Slower.
+	-- 	'conornewton/vim-pandoc-markdown-preview',
+	-- 	dependencies = {
+	-- 		'skywind3000/asyncrun.vim'
+	-- 	},
+	-- 	ft = "markdown",
+	-- 	config = function()
+	-- 		vim.g.md_args = "-C -M link-citations=true -Lcolumns/columns.lua"
+	-- 	end,
+	-- 	keys = {
+	-- 		{ "<leader>mp", "<cmd>StartMdPreview<cr>", desc = "Markdown Preview" },
+	-- 	}
+	-- },
 	{
+		-- renders to html, faster and has can autoscroll doesn 't represent the
+		-- paper trustworty and doesn' t support pandoc filters
 		"iamcco/markdown-preview.nvim",
 		ft = "markdown",
 		build = "cd app && yarn install",
 		lazy = false,
-		keys = {
-			{ "<leader>mp", "<cmd>MarkdownPreviewToggle<cr>", desc = "Markdown Preview" },
-		}
 	},
-	{
-		'niuiic/typst-preview.nvim',
-		dependencies = {
-			'niuiic/core.nvim',
-		},
-	},
-	{
-		'conornewton/vim-pandoc-markdown-preview',
-		dependencies = {
-			'skywind3000/asyncrun.vim'
-		},
-		config = function()
-			vim.g.md_args = "-M link-citations=true --lua-filter=columns/columns.lua --citeproc"
-		end
-	},
+	-- {
+	-- Buggy but useful. typst watch is better for simple workflows.
+	-- 	'niuiic/typst-preview.nvim',
+	-- 	ft = "typst",
+	-- 	dependencies = {
+	-- 		'niuiic/core.nvim',
+	-- 	},
+	-- },
 }
