@@ -564,6 +564,14 @@ require('lazy').setup({
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
+    dependencies = {
+      {
+        "andymass/vim-matchup",
+        config = function()
+          vim.g.matchup_matchparen_offscreen = { method = "popup" }
+        end,
+      },
+    },
     opts = {
       ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
       -- Autoinstall languages that are not installed
@@ -573,6 +581,7 @@ require('lazy').setup({
         additional_vim_regex_highlighting = { 'ruby' },
       },
       indent = { enable = true, disable = { 'ruby' } },
+      matchup = { enable = true, },
     },
     config = function(_, opts)
       -- Prefer git instead of curl in order to improve connectivity in some environments
