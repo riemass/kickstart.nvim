@@ -614,6 +614,14 @@ require('lazy').setup({
   },
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
+    dependencies = {
+      {
+        "andymass/vim-matchup",
+        config = function()
+          vim.g.matchup_matchparen_offscreen = { method = "popup" }
+        end,
+      },
+    },
     build = ':TSUpdate',
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
@@ -626,6 +634,7 @@ require('lazy').setup({
         additional_vim_regex_highlighting = { 'ruby' },
       },
       indent = { enable = true, disable = { 'ruby' } },
+      matchup = { enable = true, },
     },
   },
   -- require 'kickstart.plugins.debug',
