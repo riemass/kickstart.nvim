@@ -4,7 +4,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 
@@ -365,6 +365,7 @@ require('lazy').setup({
       --  - filetypes (table): Override the default list of associated filetypes for the server
       --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
       --  - settings (table): Override the default settings passed when initializing the server.
+      local util = require 'lspconfig.util'
       local servers = {
         clangd = {},
         -- gopls = {},
@@ -565,7 +566,7 @@ require('lazy').setup({
     priority = 1000, -- Make sure to load this before all the other start plugins.
     init = function()
       -- 'tokyonight-storm', 'tokyonight-moon', 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
+      vim.cmd.colorscheme 'tokyonight-moon'
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
@@ -616,9 +617,9 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
       {
-        "andymass/vim-matchup",
+        'andymass/vim-matchup',
         config = function()
-          vim.g.matchup_matchparen_offscreen = { method = "popup" }
+          vim.g.matchup_matchparen_offscreen = { method = 'popup' }
         end,
       },
     },
@@ -634,7 +635,7 @@ require('lazy').setup({
         additional_vim_regex_highlighting = { 'ruby' },
       },
       indent = { enable = true, disable = { 'ruby' } },
-      matchup = { enable = true, },
+      matchup = { enable = true },
     },
   },
   -- require 'kickstart.plugins.debug',
@@ -643,8 +644,11 @@ require('lazy').setup({
   -- require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+  require 'custom.keymaps',
+  require 'custom.options',
+  require 'custom.autocmd_utils',
 
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
